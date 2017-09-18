@@ -1,0 +1,2 @@
+# AllTeamsHelper
+AllTeams api function
