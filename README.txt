@@ -30,6 +30,9 @@ e.g.
 
 == Changelog ==
 
+= 1.2.1 =
+* Add a updater plugin
+
 = 1.2.0 =
 * Added a breadcrumb for navmenu
 

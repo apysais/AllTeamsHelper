@@ -16,7 +16,7 @@
  * Plugin Name:       AllTeams
  * Plugin URI:        http://www.alteams.nz
  * Description:       This is use for helpers.
- * Version:           1.2.0
+ * Version:           1.2.1
  * Author:            AllTeams
  * Author URI:        http://www.alteams.nz
  * License:           GPL-2.0+
@@ -111,6 +111,13 @@ function run_allteam_helpers() {
 	$plugin->run();
 	
 	AllT_NavMenuChildrenShortcode::get_instance();
+	init_updater();
 }
 //run_allteam_helpers();
 add_action('plugins_loaded', 'run_allteam_helpers');
+function init_updater(){
+	$updater = new AllT_Updater( __FILE__ ); // instantiate our class
+	$updater->set_username( 'apysais' ); // set username
+	$updater->set_repository( 'allteams-helper' ); // set repo
+	$updater->initialize(); // initialize the updater
+}
