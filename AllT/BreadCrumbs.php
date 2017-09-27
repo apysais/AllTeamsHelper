@@ -44,18 +44,18 @@ class AllT_BreadCrumbs{
 		$breadcrumb_items = array();
 		$posts_id = $posts[0]->ID;
 		$posts_title = $posts[0]->post_title;
-  
 		$locations = get_nav_menu_locations();
+		
 		if( isset($locations[$theme_locations]) ){
 			$menu = get_term( $locations[$theme_locations], 'nav_menu' );
-
+			
 			$allteam_nav_menu = new AllT_NavMenuChildren;
 			$wp_menus = wp_get_nav_menu_items($menu->term_id);
-
+			
 			$menu_id = $allteam_nav_menu->allteam_search_posts_inmenu($posts_id, $wp_menus);
-
+			
 			$parse_menus = $allteam_nav_menu->allteam_parse_menu($menu->name);
-
+			
 			if( !empty($parse_menus->$menu_id) ){
 				$parent_arr = array();
 				if( !empty($wp_menus)){
@@ -65,7 +65,7 @@ class AllT_BreadCrumbs{
 						}
 					}
 				}
-
+				
 				echo '<ol class="breadcrumb allteam-helper-breadcrumb">';
 					echo '<li class="breadcrumb-item">';
 						if( !is_multisite() ){
@@ -75,7 +75,7 @@ class AllT_BreadCrumbs{
 						echo 'Home';
 						echo '</a>';
 					echo '</li>';
-					if( is_multisite() ){
+					if ( is_multisite() ) {
 						echo '<li class="breadcrumb-item">';
 							echo '<a href="'.get_bloginfo('url').'">';
 							echo get_bloginfo('name');
@@ -107,7 +107,7 @@ class AllT_BreadCrumbs{
 		}
 		
 	}
-		
+	
 	public function __construct(){}
 }
 
