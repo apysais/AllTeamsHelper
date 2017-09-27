@@ -16,7 +16,7 @@
  * Plugin Name:       AllTeams
  * Plugin URI:        http://www.alteams.nz
  * Description:       This is use for helpers.
- * Version:           1.2.1
+ * Version:           1.2.2
  * Author:            AllTeams
  * Author URI:        http://www.alteams.nz
  * License:           GPL-2.0+
