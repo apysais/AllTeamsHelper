@@ -4,7 +4,7 @@ Donate link: http://www.alteams.nz
 Tags: for helpers
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,9 @@ e.g.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.2.3 =
+* Added css support on the parent breadcrumb
 
 = 1.2.2 =
 * Update breadcrumb for multisite and standalone

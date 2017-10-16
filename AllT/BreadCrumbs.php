@@ -55,7 +55,7 @@ class AllT_BreadCrumbs{
 			$menu_id = $allteam_nav_menu->allteam_search_posts_inmenu($posts_id, $wp_menus);
 			
 			$parse_menus = $allteam_nav_menu->allteam_parse_menu($menu->name);
-			
+			$html = '';
 			if( !empty($parse_menus->$menu_id) ){
 				$parent_arr = array();
 				if( !empty($wp_menus)){
@@ -65,44 +65,46 @@ class AllT_BreadCrumbs{
 						}
 					}
 				}
-				
-				echo '<ol class="breadcrumb allteam-helper-breadcrumb">';
-					echo '<li class="breadcrumb-item">';
+				//_dump($parent_arr);
+				$html .= '<ol class="breadcrumb allteam-helper-breadcrumb">';
+					$html .= '<li class="breadcrumb-item">';
 						if( !is_multisite() ){
 							$parent_home = get_bloginfo('url');
 						}
-						echo '<a href="'.$parent_home.'">';
-						echo 'Home';
-						echo '</a>';
-					echo '</li>';
+						$html .= '<a href="'.$parent_home.'">';
+						$html .= 'Home';
+						$html .= '</a>';
+					$html .= '</li>';
 					if ( is_multisite() ) {
-						echo '<li class="breadcrumb-item">';
-							echo '<a href="'.get_bloginfo('url').'">';
-							echo get_bloginfo('name');
-							echo '</a>';
-						echo '</li>';
+						$html .= '<li class="breadcrumb-item">';
+							$html .= '<a href="'.get_bloginfo('url').'">';
+							$html .= get_bloginfo('name');
+							$html .= '</a>';
+						$html .= '</li>';
 					}
 					if( !empty($parent_arr) && $posts_id != $parent_arr->object_id ){
-						echo '<li class="breadcrumb-item breadcrumb-post-id-'.$parent_arr->object_id.'">';
-						echo '<a href="'.get_permalink($parent_arr->object_id).'">';
-							echo $parent_arr->title;
-						echo '</a>';
-						echo '</li>';
+						$html .= '<li class="breadcrumb-item breadcrumb-post-id-'.$parent_arr->object_id.' '.$parent_arr->object.' '.$parent_arr->type.' '.implode(' ',$parent_arr->classes).'">';
+						$html .= '<a href="'.get_permalink($parent_arr->object_id).'">';
+							$html .= $parent_arr->title;
+						$html .= '</a>';
+						$html .= '</li>';
 					}
 				if( !empty($parse_menus->$menu_id) ){
 					$stop = false;
 					foreach($parse_menus->$menu_id as $k => $v){
+						//_dump($v);
 						$active = ($posts_id == $v->id) ? 'active':'';
 						if( $active == 'active' ){
-							echo '<li class="breadcrumb-item breadcrumb-post-id-'.$v->id.' '.$active.'">';
-							echo $v->title;
+							$html .= '<li class="breadcrumb-item breadcrumb-post-id-'.$v->id.' '.$active.'">';
+							$html .= $v->title;
 							$stop = true;
-							echo '</li>';
+							$html .= '</li>';
 						}
 					}
 				
 				}
-				echo '</ol>';
+				$html .= '</ol>';
+				echo $html;
 			}
 		}
 		
