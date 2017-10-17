@@ -70,6 +70,12 @@ class AllT_NavMenuChildren{
 					'menu_parent_id' => $menu_parent_id,
 					'posts_title' => $posts_title,
 					'key_id' => $key_id,
+					'object_id' => $v->object_id,
+					'object' => $v->object,
+					'type' => $v->type,
+					'classes' => $v->classes,
+					'custom_url' => $v->url,
+					'url' => get_permalink($v->object_id),
 				);
 			}
 		}

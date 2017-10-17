@@ -71,8 +71,11 @@ class AllT_BreadCrumbs{
 						if( !is_multisite() ){
 							$parent_home = get_bloginfo('url');
 						}
+						$parent_title = 'Home';
+						$parent_home = apply_filters('allteams_breadcrumb_parent_home', $parent_home);
+						$parent_title = apply_filters('allteams_breadcrumb_parent_home', $parent_title);
 						$html .= '<a href="'.$parent_home.'">';
-						$html .= 'Home';
+						$html .= $parent_title;
 						$html .= '</a>';
 					$html .= '</li>';
 					if ( is_multisite() ) {
@@ -83,8 +86,9 @@ class AllT_BreadCrumbs{
 						$html .= '</li>';
 					}
 					if( !empty($parent_arr) && $posts_id != $parent_arr->object_id ){
+						$parent_arr = apply_filters('allteams_breadcrumb_parentarr', $parent_arr, $parse_menus, $posts_id);
 						$html .= '<li class="breadcrumb-item breadcrumb-post-id-'.$parent_arr->object_id.' '.$parent_arr->object.' '.$parent_arr->type.' '.implode(' ',$parent_arr->classes).'">';
-						$html .= '<a href="'.get_permalink($parent_arr->object_id).'">';
+						$html .= '<a href="'.$parent_arr->url.'">';
 							$html .= $parent_arr->title;
 						$html .= '</a>';
 						$html .= '</li>';
@@ -104,6 +108,7 @@ class AllT_BreadCrumbs{
 				
 				}
 				$html .= '</ol>';
+				$html = apply_filters('allteams_breadcrumb_output', $html, $parse_menus, $parent_arr, $wp_menus);
 				echo $html;
 			}
 		}
