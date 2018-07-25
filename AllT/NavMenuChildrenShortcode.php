@@ -71,7 +71,21 @@ class AllT_NavMenuChildrenShortcode{
 		}
 	}
 
+	public function allteams_get_menu_children_only($atts)
+	{
+		$a = shortcode_atts( array(
+			'menu_name' => ''
+		), $atts );
+		$parent_arr = array();
+		$allteam_nav_menu = new AllT_NavMenuChildren;
+		$wp_menus = wp_get_nav_menu_items($a['menu_name']);
+		if( !empty($wp_menus)) {
+			echo $allteam_nav_menu->allteam_nav_menu_children_html($wp_menus);
+		}
+	}
+
 	public function __construct(){
 		add_shortcode( 'allteams_menu_items_children', array($this, 'allteams_get_menu_items') );
+		add_shortcode( 'allteams_menu_items_children_only', array($this, 'allteams_get_menu_children_only') );
 	}
 }

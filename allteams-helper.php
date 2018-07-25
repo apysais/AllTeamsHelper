@@ -16,7 +16,7 @@
  * Plugin Name:       AllTeams
  * Plugin URI:        http://www.alteams.nz
  * Description:       This is use for helpers.
- * Version:           1.3.3
+ * Version:           1.3.4
  * Author:            AllTeams
  * Author URI:        http://www.alteams.nz
  * License:           GPL-2.0+
@@ -84,7 +84,7 @@ if( !function_exists('wp_multisite_nav_menu') ){
 		}
 
 		switch_to_blog( $origin_id );
-		wp_nav_menu( $args );   
+		wp_nav_menu( $args );
 		restore_current_blog();
 
 	}
@@ -109,7 +109,7 @@ function run_allteam_helpers() {
 
 	$plugin = new Allteam_Helpers();
 	$plugin->run();
-	
+
 	AllT_NavMenuChildrenShortcode::get_instance();
 	init_updater();
 }

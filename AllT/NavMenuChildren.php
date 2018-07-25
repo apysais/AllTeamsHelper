@@ -168,5 +168,28 @@ class AllT_NavMenuChildren{
 		}
 		return $html;
 	}
+	public function allteam_nav_menu_children_html($menu_array, $menu_class_array = array('allteam-navmenu-children')){
+		global $posts;
+		$post = $posts[0];
+		$html = '';
+		$menu_class = implode(' ', $menu_class_array);
+
+		if( is_page() && $menu_array && count($menu_array) > 0 ){
+			$html = '<div id="shortcode-allteam-page-menu-children" class="'.$menu_class.'">';
+				$current_menu = '';
+
+				$html .= '<ul class="menu-children">';
+				foreach($menu_array as $k => $v){
+					$html .= '<li>';
+						$html .= '<a href="'.$v->url.'">';
+						$html .= '<span class="parent-menu menu-item-'.$v->menu_id.'">'.$v->title.'</span>';
+						$html .= '</a>';
+					$html .= '</li>';
+				}
+				$html .= '</ul>';
+			$html .= '</div>';
+		}
+		return $html;
+	}
 	public function __construct(){}
 }

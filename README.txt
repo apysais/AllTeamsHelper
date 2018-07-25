@@ -4,7 +4,7 @@ Donate link: http://www.alteams.nz
 Tags: for helpers
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,9 @@ e.g.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.3.4 =
+* Get menu children only
 
 = 1.3.3 =
 * Added filters support for html layout and parent attributes
