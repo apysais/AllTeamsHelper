@@ -1,8 +1,8 @@
 <?php
 /**
  * This is for the displaying menu and siblings
- * 
- * 
+ *
+ *
  * @since 0.0.1
  * */
 class AllT_NavMenuChildrenShortcode{
@@ -38,17 +38,17 @@ class AllT_NavMenuChildrenShortcode{
 
 		return self::$instance;
 	}
-	
+
 	public function allteams_get_menu_items($atts){
 		global $posts;
 		if( is_page() ){
 			$wp_menus = array();
 			$posts_id = $posts[0]->ID;
 			$posts_title = $posts[0]->post_title;
-			
+
 			$parse_menus = array();
 			$menu_id = null;
-			
+
 			$a = shortcode_atts( array(
 				'menu_name' => ''
 			), $atts );
@@ -70,7 +70,7 @@ class AllT_NavMenuChildrenShortcode{
 			}
 		}
 	}
-	
+
 	public function __construct(){
 		add_shortcode( 'allteams_menu_items_children', array($this, 'allteams_get_menu_items') );
 	}

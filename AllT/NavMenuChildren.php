@@ -1,8 +1,8 @@
 <?php
 /**
  * This is for the displaying menu and siblings
- * 
- * 
+ *
+ *
  * @since 0.0.1
  * */
 class AllT_NavMenuChildren{
@@ -38,15 +38,15 @@ class AllT_NavMenuChildren{
 
 		return self::$instance;
 	}
-	
+
 	/**
 	 * prase the wp_get_nav_menu_items
-	 * 
+	 *
 	 * @param	$menu_name	string	the name of the menu nav
 	 * @param	$return	string	the default return of the parse, default is object, can be assoc array
 	 * - OBJ for object
 	 * - ASSOC for associative array
-	 * 
+	 *
 	 * @return	base on $return
 	 * */
 	public function allteam_parse_menu($menu_name, $return = 'OBJ'){
@@ -84,17 +84,17 @@ class AllT_NavMenuChildren{
 		}
 		return $parse_menu;
 	}
-	
+
 	/**
 	 * search posts inside the menu
-	 * 
-	 * @param	$search_by	mix	
+	 *
+	 * @param	$search_by	mix
 	 * this can be ID or title, default would be ID
-	 * @param	$menu_object	wp_get_nav_menu_items	
+	 * @param	$menu_object	wp_get_nav_menu_items
 	 * @param	$ret	string	the default return of the parse, default is object, can be assoc array
 	 * - OBJ for object
 	 * - ASSOC for associative array
-	 * 
+	 *
 	 * @return	array | object
 	 * */
 	public function allteam_search_posts_inmenu($search_by, $menu_object){
@@ -113,9 +113,9 @@ class AllT_NavMenuChildren{
 			/**
 			 * then its title
 			 * */
-			$posts_title = trim(strtolower($search_by)); 
+			$posts_title = trim(strtolower($search_by));
 		}
-		
+
 		if( !empty($menu_object) ){
 			//$menu_parent_id = 0;
 			foreach($menu_object as $k => $v){
@@ -129,11 +129,11 @@ class AllT_NavMenuChildren{
 		}
 		return $menu_parent_id;
 	}
-	
+
 	public function init(){
-		
+
 	}
-	
+
 	/**
 	 * this is for the html stuff
 	 * */
